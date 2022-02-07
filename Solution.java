@@ -1,27 +1,20 @@
-import java.util.*;
-
+package com.javacourse.lessons6.lessons5;
+// 7, 1, 5, 3, 6, 4
 class Solution {
-    int i;
-    int b;
-    LinkedList<Integer> li = new LinkedList<>();
-    LinkedList<Integer> li2 = new LinkedList<>();
+    public int maxProfit(int[] prices) {
+        int lsf = Integer.MAX_VALUE; //Переменная, в которой храниться максимальное значение
+        int op = 0;
+        int pist = 0;
 
-    void TwoSum(int[] nums, int target) {
-        for (i = 0; i < nums.length; i++) {
-            for (b = i + 1; b < nums.length; b++) {
-                if (nums[i] + nums[b] == target) {
-                    li.push(i);
-                    li.push(b);
-                }
+        for(int i = 0; i < prices.length; i++){
+            if(prices[i] < lsf){ // i = 1; 2;
+                lsf = prices[i]; // lfs = 1;
+            } // Таким методом, мы находим самое большое число в массиве
+            pist = prices[i] - lsf; // pist = 0; 1; // Тут мы от самого большего числа, отнимаем самое меньшее
+            if(op < pist){ // true;
+                op = pist; // op = 0; 1; Приравниваем значение к op и возвращаем ее, по окончанию цикла
             }
         }
-        System.out.println(li);
-    }
-
-    public static void main(String[] args) {
-        Solution result = new Solution();
-        int[] x = { 2, 7, 11, 15 };
-        int y = 9;
-        result.TwoSum(x, y);
+        return op;
     }
 }
